@@ -16,7 +16,7 @@ local Tp4Tab = Window:MakeTab({
 _G.win = true 
 function win()
      while _G.win == true do
-        local tweenspeed = 100000
+        local tweenspeed = 50000
         local Players = game:GetService("Players")
                 local TweenService = game:GetService("TweenService")
                 local Workspace = game:GetService("Workspace")
@@ -45,7 +45,7 @@ function win()
                         BV.maxForce = Vector3.new(9e9, 9e9, 9e9)
                         BV.Name = "/ugcleaks"
         TweenTo(CFrame.new(-5112.5, 10, 21550, 1, 0, 0, 0, 1, 0, 0, 0, 1))      
-        wait(0.5)
+        wait(1)
         game:GetService("Players").LocalPlayer.Character.Humanoid.Health = 0
         wait(2.5)
     end
