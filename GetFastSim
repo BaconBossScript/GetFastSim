@@ -39,9 +39,9 @@ function win()
                         BV.maxForce = Vector3.new(9e9, 9e9, 9e9)
                         BV.Name = "/ugcleaks"
         TweenTo(CFrame.new(-5112.5, 10, 21550, 1, 0, 0, 0, 1, 0, 0, 0, 1))      
-        wait(0)
+        wait(0.5)
         game:GetService("Players").LocalPlayer.Character.Humanoid.Health = 0
-        wait(3)
+        wait(2.5)
     end
 end
 
