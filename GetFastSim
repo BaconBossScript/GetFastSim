@@ -1,0 +1,110 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Window = OrionLib:MakeWindow({Name = "BaconBoss Hub | Get Fast Simulator", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
+
+local TpTab = Window:MakeTab({
+	Name = "Main",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+_G.win = true 
+function win()
+     while _G.win == true do
+        local tweenspeed = 100000
+        local Players = game:GetService("Players")
+                local TweenService = game:GetService("TweenService")
+                local Workspace = game:GetService("Workspace")
+                local LocalPlayer = Players.LocalPlayer
+        local function TweenTo(cf, dur)
+                    local Character = LocalPlayer.Character
+                    if not Character or not Character:FindFirstChild("HumanoidRootPart") then
+                        return
+                    end
+        
+                    local rootPart = Character:WaitForChild("HumanoidRootPart")
+                    local direction = (cf.p - rootPart.Position).unit
+                    local targetCFrame = CFrame.new(cf.p)
+                    local distance = (targetCFrame.p - rootPart.CFrame.p).Magnitude
+                    local tweenInfo = TweenInfo.new(distance / tweenspeed, Enum.EasingStyle.Linear)
+                    local tween = TweenService:Create(rootPart, tweenInfo, {
+                        CFrame = targetCFrame
+                    })
+                    tween:Play()
+                    tween.Completed:Wait() 
+                    return tween
+                end
+        local BV = Instance.new('BodyVelocity', game.Workspace)
+                        BV.Parent = game.Players.LocalPlayer.Character.HumanoidRootPart
+                        BV.velocity = Vector3.new(0, 0, 0)
+                        BV.maxForce = Vector3.new(9e9, 9e9, 9e9)
+                        BV.Name = "/ugcleaks"
+        TweenTo(CFrame.new(-5112.5, 10, 21550, 1, 0, 0, 0, 1, 0, 0, 0, 1))      
+        wait(0)
+        game:GetService("Players").LocalPlayer.Character.Humanoid.Health = 0
+        wait(3)
+    end
+end
+
+TpTab:AddToggle({
+    Name = "Auto Best Win Farm",
+    Default = false,
+    Callback = function(Value)
+        _G.win = Value
+        win()
+    end    
+})
+
+_G.click = true
+function click()
+     while _G.click == true do
+        game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("ClickForSpeed"):InvokeServer()
+     wait(0)
+    end
+end
+
+TpTab:AddToggle({
+    Name = "Auto Speed",
+    Default = false,
+    Callback = function(Value)
+        _G.click = Value
+        click()
+    end    
+})
+
+_G.rb = true
+function rb()
+      while _G.rb == true do
+        game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Rebirth"):FireServer()
+     wait(0.5)
+   end
+end
+
+TpTab:AddToggle({
+    Name = "Auto Rebirth",
+    Default = false,
+    Callback = function(Value)
+        _G.rb = Value
+        rb()
+    end    
+})
+
+_G.egg = true
+function egg()
+     while _G.egg == true do
+        local args = {
+            [1] = "LegendaryEgg"
+        }
+        
+        game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("BuyPetEgg"):InvokeServer(unpack(args))
+      wait(0)
+    end
+end
+
+TpTab:AddToggle({
+    Name = "Auto Hatch Godly Pets",
+    Default = false,
+    Callback = function(Value)
+        _G.egg = Value
+        egg()
+    end    
+})
