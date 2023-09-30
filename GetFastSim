@@ -51,6 +51,13 @@ function win()
     end
 end
 
+TpTab:AddButton({
+	Name = "Inf Yeild",
+	Callback = function()
+        loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+    end
+}) 
+
 TpTab:AddToggle({
     Name = "Auto Best Win Farm",
     Default = false,
